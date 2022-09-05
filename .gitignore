@@ -1,0 +1,7 @@
+#executables
+prototype
+*.exe
+
+#obj
+obj
+*.o
