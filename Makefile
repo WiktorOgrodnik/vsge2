@@ -7,7 +7,7 @@ SFML = -lsfml-graphics -lsfml-window -lsfml-system
 #vsge lib
 LIB_DIR = lib
 OBJ_DIR_LIB = obj
-OBJS_LIB = $(addprefix $(OBJ_DIR_LIB)/, vsge_loop.o)
+OBJS_LIB = $(addprefix $(OBJ_DIR_LIB)/, vsge_internal_shape.o vsge_internal_rectangle.o vsge_shape.o vsge_core.o vsge_loop.o vsge_rectangle.o)
 
 #examples
 SRC_DIR = examples

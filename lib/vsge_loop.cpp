@@ -22,6 +22,8 @@ void pollEvents(sf::RenderWindow& window) {
 	}
 }
 
+using namespace vsge;
+
 int main(int argc, char* argv[]) {
 
 	argc = argc;
@@ -38,6 +40,11 @@ int main(int argc, char* argv[]) {
 	while (window.isOpen()) {
 		window.clear(sf::Color(sf::Color::White));
 		pollEvents(window);
+
+		for (auto obj : Core::getInstance().drawables) {
+			obj->Draw(window);
+		}
+		
 		window.display();
 	}
 
