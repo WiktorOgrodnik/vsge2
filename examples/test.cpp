@@ -18,7 +18,7 @@ int main() {
 
 	for (int i = 1; i <= 5; i++) {
 		std::cout << i << '\n';
-		rect->SetPosition(i * 50, 0); 
+		rect->SetPosition(i * 50, 0);
 		the_other_func();
 		sleep(1);
 	}

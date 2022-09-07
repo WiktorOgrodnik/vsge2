@@ -5,3 +5,6 @@ prototype
 #obj
 obj
 *.o
+
+#vscode
+.vscode
