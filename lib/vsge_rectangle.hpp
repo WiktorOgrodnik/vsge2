@@ -9,7 +9,6 @@ namespace vsge {
 
 		public: 
 		Rectangle();
-		~Rectangle();
 	};
 
 }

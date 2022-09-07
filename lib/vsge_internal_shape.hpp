@@ -15,6 +15,7 @@ namespace vsge
 
 		void SetPosition(int x, int y); // to replace with vsge point
 		void Draw(sf::RenderWindow &window);
+		virtual ~Internal_Shape();
 	};
 }
 

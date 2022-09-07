@@ -10,16 +10,19 @@ namespace vsge {
 
 		private:
 
+		sf::RenderWindow* window;
 		std::vector<Internal_Shape*> drawables;
 
 		Core();
 		~Core();
 
+		std::vector<Internal_Shape*>::iterator findObject(Internal_Shape* object);
+
 		public:
 
-		sf::RenderWindow* window;
-
 		void initWindow(char* title);
+
+		// Manage render queues
 
 		static Core& getInstance();
 		void pollEvents();
@@ -30,9 +33,10 @@ namespace vsge {
 
 		Internal_Rectangle* Rectangle_Factory();
 
+		// Cemeteries
+
+		void Shape_Cementry(Internal_Shape* shape);
 	};
-
-
 }
 
 #endif

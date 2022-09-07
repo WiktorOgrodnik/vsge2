@@ -1,4 +1,5 @@
 #include "vsge_core.hpp"
+#include <cassert>
 
 namespace vsge {
 
@@ -10,7 +11,17 @@ namespace vsge {
 	}
 
 	Core::~Core() {
-		
+		drawables.clear();
+		delete window;
+	}
+
+	std::vector<Internal_Shape*>::iterator Core::findObject(Internal_Shape* object) {
+
+		for (auto it = drawables.begin(); it != drawables.end(); it++) {
+			if (*it == object) return it;
+		}
+
+		return drawables.end();
 	}
 
 	void Core::initWindow(char* title) {
@@ -49,6 +60,8 @@ namespace vsge {
 	bool Core::isRunning() const {
 		return window->isOpen();
 	}
+	
+	// Factories
 
 	Internal_Rectangle* Core::Rectangle_Factory() {
 
@@ -56,6 +69,17 @@ namespace vsge {
 
 		drawables.push_back(t);
 		return t;
+	}
+	
+	// Cementries
+
+	void Core::Shape_Cementry(Internal_Shape* shape) {
+		
+		auto index = findObject(shape);
+
+		assert((void("This shape does not exist in the render queue!"), index != drawables.end()));
+
+		drawables.erase(index);
 	}
 
 

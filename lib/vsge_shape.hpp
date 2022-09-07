@@ -13,8 +13,8 @@ namespace vsge {
 
 		public:
 
-		Shape() {};
-		virtual ~Shape() {};
+		Shape();
+		virtual ~Shape();
 		void SetPosition(int x, int y); // to replace with vsge point
 	};
 

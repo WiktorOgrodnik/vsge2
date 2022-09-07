@@ -6,8 +6,4 @@ namespace vsge {
 	Rectangle::Rectangle() {
 		internal = Core::getInstance().Rectangle_Factory();
 	}
-
-	Rectangle::~Rectangle() {
-		
-	}
 }

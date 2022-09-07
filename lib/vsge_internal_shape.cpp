@@ -13,4 +13,8 @@ namespace vsge {
 	void Internal_Shape::Draw(sf::RenderWindow& window) {
 		window.draw(*shape);
 	}
+
+	Internal_Shape::~Internal_Shape() {
+		delete shape;
+	}
 }

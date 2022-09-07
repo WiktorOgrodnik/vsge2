@@ -9,7 +9,6 @@ namespace vsge {
 		public: //maybe "friend" in a future
 
 		Internal_Rectangle();
-
 	};
 }
 
