@@ -3,20 +3,36 @@
 
 #include "vsge_internal_rectangle.hpp"
 #include <vector>
+#include <map>
 
 namespace vsge {
+
+	class Layers_container {
+
+		std::map<int, std::vector<Drawable*>> layers;
+
+		std::vector<Drawable*>::iterator findObject(std::vector<Drawable*>& vec, Drawable* object);
+
+		public:
+
+		Layers_container();
+		~Layers_container();
+
+		void addToLayer(int layer, Drawable* drawable);
+		void deleteFromLayer(Drawable* drawable);
+
+		void draw(sf::RenderWindow* window);
+	};
 
 	class Core {
 
 		private:
 
 		sf::RenderWindow* window;
-		std::vector<Internal_Shape*> drawables;
+		Layers_container layers;
 
 		Core();
 		~Core();
-
-		std::vector<Internal_Shape*>::iterator findObject(Internal_Shape* object);
 
 		public:
 
@@ -31,7 +47,7 @@ namespace vsge {
 
 		// Factories
 
-		Internal_Rectangle* Rectangle_Factory();
+		Internal_Rectangle* Rectangle_Factory(unsigned layer);
 
 		// Cemeteries
 

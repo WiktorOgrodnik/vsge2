@@ -1,21 +1,24 @@
 #ifndef VSGE_SHAPE_HPP
 #define VSGE_SHAPE_HPP
 
-namespace vsge {
+#include "vsge_common.hpp"
+
+namespace vsge
+{
 
 	class Internal_Shape;
 
-	class Shape {
+	class Shape
+	{
 
-		protected:
+	protected:
+		Internal_Shape *internal;
 
-		Internal_Shape* internal;
-
-		public:
-
+	public:
 		Shape();
 		virtual ~Shape();
-		void SetPosition(int x, int y); // to replace with vsge point
+		void setPosition(Vector2f pos); // to replace with vsge point
+		void setColor(int i); // temporary solution, only to test layers
 	};
 
 }

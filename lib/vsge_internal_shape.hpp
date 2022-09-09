@@ -1,11 +1,11 @@
 #ifndef VSGE_INTERNAL_SHAPE_HPP
 #define VSGE_INTERNAL_SHAPE_HPP
 
-#include "vsge_config.hpp"
+#include "vsge_drawable.hpp"
 
 namespace vsge
 {
-	class Internal_Shape {
+	class Internal_Shape : public Drawable {
 
 	protected:
 		sf::Shape *shape;
@@ -13,9 +13,12 @@ namespace vsge
 
 	public: // maybe "friend" in a future
 
-		void SetPosition(int x, int y); // to replace with vsge point
-		void Draw(sf::RenderWindow &window);
+		void Draw(sf::RenderWindow* window) override;
 		virtual ~Internal_Shape();
+
+		Vector2f getPosition() override;
+		void setPosition(Vector2f pos) override;
+		void setColor(int i);
 	};
 }
 

@@ -3,7 +3,7 @@
 
 namespace vsge {
 
-	Rectangle::Rectangle() {
-		internal = Core::getInstance().Rectangle_Factory();
+	Rectangle::Rectangle(int layer) {
+		internal = Core::getInstance().Rectangle_Factory(layer);
 	}
 }
