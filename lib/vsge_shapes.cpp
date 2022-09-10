@@ -1,4 +1,4 @@
-#include "vsge_shape.hpp"
+#include "vsge_shapes.hpp"
 #include "vsge_core.hpp"
 
 namespace vsge {
@@ -15,5 +15,9 @@ namespace vsge {
 
 	void Shape::setColor(int i) {
 		internal->setColor(i);
+	}
+
+	Rectangle::Rectangle(int layer) {
+		internal = Core::getInstance().Rectangle_Factory(layer);
 	}
 }
