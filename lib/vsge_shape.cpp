@@ -9,7 +9,11 @@ namespace vsge {
 		delete internal;
 	}
 
-	void Shape::SetPosition(int x, int y) {
-		internal->SetPosition(x, y);
+	void Shape::setPosition(Vector2f pos) {
+		internal->setPosition(pos);
+	}
+
+	void Shape::setColor(int i) {
+		internal->setColor(i);
 	}
 }

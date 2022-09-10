@@ -5,4 +5,6 @@
 #include <SFML/Config.hpp>
 #include <SFML/Window.hpp>
 
+#include "vsge_common.hpp"
+
 #endif

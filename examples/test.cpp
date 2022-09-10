@@ -12,13 +12,17 @@ void the_other_func() {
 int main() {
 
 	std::cout << "Hello World!\n";
+	Rectangle rect2(0);
     {
-		Rectangle rect;
-		rect.SetPosition(0, 0);
+		Rectangle rect(1);
+		rect.setPosition(Vector2f(0, 0));
+		rect2.setPosition(Vector2f(100, 30));
+
+		rect2.setColor(1);
 		
 		for (int i = 1; i <= 5; i++) {
 			std::cout << i << '\n';
-			rect.SetPosition(i * 50, 0);
+			rect.setPosition(Vector2f(i * 50, 0));
 			the_other_func();
 			sleep(1);
 		}

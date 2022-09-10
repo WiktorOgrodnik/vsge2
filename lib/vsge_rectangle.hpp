@@ -8,7 +8,7 @@ namespace vsge {
 	class Rectangle : public Shape {
 
 		public: 
-		Rectangle();
+		Rectangle(int layer = 0);
 	};
 
 }
