@@ -1,7 +1,7 @@
 #ifndef VSGE_HPP
 #define VSGE_HPP
 
-#include "vsge_rectangle.hpp"
+#include "vsge_shapes.hpp"
 
 #define main user_main
 

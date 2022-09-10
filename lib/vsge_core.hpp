@@ -1,7 +1,7 @@
 #ifndef VSGE_CORE_HPP
 #define VSGE_CORE_HPP
 
-#include "vsge_internal_rectangle.hpp"
+#include "vsge_drawable.hpp"
 #include <vector>
 #include <map>
 
