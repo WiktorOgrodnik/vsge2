@@ -31,7 +31,7 @@ namespace vsge {
 
 		Vector2f getPosition() override;
 		void setPosition(Vector2f pos) override;
-		void setColor(int i);
+		void setColor(Color color);
 	};
 
 	class Internal_Rectangle : public Internal_Shape {

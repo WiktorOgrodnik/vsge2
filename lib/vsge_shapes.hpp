@@ -16,7 +16,7 @@ namespace vsge
 		Shape();
 		virtual ~Shape();
 		void setPosition(Vector2f pos);
-		void setColor(int i); // temporary solution, only to test layers
+		void setColor(Color color);
 	};
 
 	class Rectangle : public Shape {
