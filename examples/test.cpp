@@ -13,6 +13,7 @@ int main() {
 
 	std::cout << "Hello World!\n";
 	Rectangle rect2(5);
+	rect2.setSize(Vector2f(50, 50));
     {
 		Rectangle rect(1);
 		rect.setPosition(Vector2f(0, 0));
@@ -23,6 +24,7 @@ int main() {
 		for (int i = 1; i <= 5; i++) {
 			std::cout << i << '\n';
 			rect.setPosition(Vector2f(i * 50, 0));
+			rect.setColor(Color(0, 0, i*50));
 			the_other_func();
 			sleep(1);
 		}

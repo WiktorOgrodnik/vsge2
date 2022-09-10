@@ -11,18 +11,28 @@ namespace vsge
 
 	protected:
 		Internal_Shape *internal;
+		bool hidden;
 
 	public:
 		Shape();
 		virtual ~Shape();
-		void setPosition(Vector2f pos);
+		Vector2f getPosition() const;
+		void setPosition(Vector2f pos, bool animation = false);
+		Color getColor() const;
 		void setColor(Color color);
+		// Color getOutlineColor() const;
+		// void setOutlineColor(Color color);
+
+		// void hide();
+		// void unhide();
 	};
 
 	class Rectangle : public Shape {
 
-	public: 
-		Rectangle(int layer = 0);
+	public:
+		Rectangle(int layer = 0, bool hidden = false);
+		Vector2f getSize() const;
+		void setSize(Vector2f size);
 	};
 }
 
