@@ -31,21 +31,8 @@ namespace vsge {
 		shape->setPosition(sf::Vector2f(pos.x, pos.y));
 	}
 
-	void Internal_Shape::setColor(int i) {
-		switch (i) {
-			case 0:
-				shape->setFillColor(sf::Color::Black);
-				break;
-			case 1:
-				shape->setFillColor(sf::Color::Red);
-				break;
-			case 2:
-			 	shape->setFillColor(sf::Color::Yellow);
-				break;
-			default:
-				shape->setFillColor(sf::Color::Blue);
-				break;
-		}
+	void Internal_Shape::setColor(Color color) {
+		shape->setFillColor(sf::Color(color.r, color.g, color.b, color.a));
 	}
 
 	Internal_Rectangle::Internal_Rectangle() {

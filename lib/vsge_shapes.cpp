@@ -13,8 +13,8 @@ namespace vsge {
 		internal->setPosition(pos);
 	}
 
-	void Shape::setColor(int i) {
-		internal->setColor(i);
+	void Shape::setColor(Color color) {
+		internal->setColor(color);
 	}
 
 	Rectangle::Rectangle(int layer) {
