@@ -32,7 +32,6 @@ int main() {
 		}
 	}
 
-	sleep(1);
 
 	Rectangle rect3(6); rect3.setColor(Color(0, 255, 0)); rect3.setPosition(Vector2f(20, 20));
 	Rectangle rect4(4); rect4.setColor(Color(255, 255, 0)); rect4.setPosition(Vector2f(0, 0));

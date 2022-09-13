@@ -8,7 +8,7 @@ namespace vsge {
 	}
 
 	Shape::~Shape() {
-		Core::getInstance().Shape_Cementry(internal);
+		if (!hidden) Core::getInstance().Shape_Cementry(internal);
 		delete internal;
 	}
 
