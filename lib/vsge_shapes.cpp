@@ -8,7 +8,8 @@ namespace vsge {
 	}
 
 	Shape::~Shape() {
-		Core::getInstance().Shape_Cementry(internal);
+		if (!hidden) Core::getInstance().Shape_Cementry(internal);
+
 		delete internal;
 	}
 
@@ -35,6 +36,32 @@ namespace vsge {
 	// void Shape::setOutlineColor(Color color) {
 	// 	internal->setOutlineColor(color);
 	// }
+
+  int Shape::getLayer() {
+		return internal->getLayer();
+	}
+
+	void Shape::setLayer(int layer) {
+		if (layer != internal->getLayer()) {
+			if (!hidden) Core::getInstance().deleteFromLayer(internal->getLayer(), internal);
+			internal->setLayer(layer);
+			if (!hidden) Core::getInstance().addToLayer(internal->getLayer(), internal);
+		}
+	}
+
+	void Shape::hide() {
+		if (!hidden) {
+			Core::getInstance().deleteFromLayer(internal->getLayer(), internal);
+			hidden = true;
+		}
+	}
+
+	void Shape::unhide() {
+		if (hidden) {
+			Core::getInstance().addToLayer(internal->getLayer(), internal);
+			hidden = false;
+		}
+	}
 
 	Rectangle::Rectangle(int layer, bool hidden) {
 		internal = Core::getInstance().Rectangle_Factory(layer);
