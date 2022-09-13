@@ -39,6 +39,7 @@ int main() {
 	for (int i = 0; i < 10; i++) {
 		if (i % 2 == 0) rect3.setLayer(3);
 		else rect3.setLayer(6);
+		sleep(1);
 	}
 
 	return 0;
