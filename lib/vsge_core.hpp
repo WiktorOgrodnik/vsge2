@@ -34,6 +34,8 @@ namespace vsge {
 		Core();
 		~Core();
 
+		void cleanup();
+
 		public:
 
 		void initWindow(char* title);
@@ -43,7 +45,11 @@ namespace vsge {
 		static Core& getInstance();
 		void pollEvents();
 		void render();
+		
+		// Running and closing
+
 		bool isRunning() const;
+		void terminate();
 
 		// Manage layers
 
