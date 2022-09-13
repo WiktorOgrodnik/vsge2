@@ -10,6 +10,18 @@ namespace vsge {
 		
 	}
 
+	int Drawable::getLayer() {
+		return layer;
+	}
+
+	/**
+	 * Warning: this function does not change real objects layer! It only changes the number!
+	 * Do not use if you do not have to!
+	 */
+	void Drawable::setLayer(int layer) {
+		this->layer = layer;	
+	}
+
 	Internal_Shape::Internal_Shape() {
 
 	}
@@ -49,7 +61,8 @@ namespace vsge {
 		shape->setOutlineColor(sf::Color(color.r, color.g, color.b, color.a));
 	}
 
-	Internal_Rectangle::Internal_Rectangle() {
+	Internal_Rectangle::Internal_Rectangle(int layer) {
+		this->layer = layer;
 		shape = new sf::RectangleShape();
 		this->setSize(Vector2f(100, 100));
 		this->setColor(Color(0, 0, 0));

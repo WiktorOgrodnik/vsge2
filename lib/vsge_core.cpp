@@ -24,21 +24,17 @@ namespace vsge {
 		layers[layer].push_back(drawable);
 	}
 
-	void Layers_container::deleteFromLayer(Drawable* drawable) {
+	void Layers_container::deleteFromLayer(int layer, Drawable* drawable) {
 
-		for (auto it = layers.begin(); it != layers.end(); it++) {
+		assert((void("This layer does not exists!"), layers.find(layer) != layers.end()));
 
-			auto index = findObject(it->second, drawable);
+		std::vector<Drawable*>& vec = layers[layer];
 
-			if (index == it->second.end()) continue;
-			else {
-				it->second.erase(index);
-				return;
-			}
+		auto index = findObject(vec, drawable);
 
-		}
+		assert((void("This shape does not exist in the render engine!"), index != vec.end()));
 
-		assert((void("This shape does not exist in the render engine!"), false));
+		vec.erase(index);
 	}
 
 	void Layers_container::draw(sf::RenderWindow* window) {
@@ -93,12 +89,22 @@ namespace vsge {
 	bool Core::isRunning() const {
 		return window->isOpen();
 	}
+
+	// Manage layers
+
+	void Core::addToLayer(int layer, Drawable* drawable) {
+		layers.addToLayer(layer, drawable);
+	}
+
+	void Core::deleteFromLayer(int layer, Drawable* drawable) {
+		layers.deleteFromLayer(layer, drawable);
+	}
 	
 	// Factories
 
-	Internal_Rectangle* Core::Rectangle_Factory(unsigned layer) {
+	Internal_Rectangle* Core::Rectangle_Factory(int layer) {
 
-		Internal_Rectangle* t = new Internal_Rectangle();
+		Internal_Rectangle* t = new Internal_Rectangle(layer);
 
 		layers.addToLayer(layer, t);
 		return t;
@@ -107,6 +113,6 @@ namespace vsge {
 	// Cementries
 
 	void Core::Shape_Cementry(Internal_Shape* shape) {
-		layers.deleteFromLayer(shape);
+		layers.deleteFromLayer(shape->getLayer(), shape);
 	}
 }

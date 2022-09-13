@@ -7,6 +7,10 @@ namespace vsge {
 
 	class Drawable {
 
+	protected:
+
+		int layer;
+
 	public: // Internal API
 		
 		Drawable();
@@ -16,6 +20,9 @@ namespace vsge {
 
 		virtual Vector2f getPosition() const = 0;
 		virtual void setPosition(Vector2f pos) = 0;
+
+		int getLayer();
+		void setLayer(int layer);
 	};
 
 	class Internal_Shape : public Drawable {
@@ -41,7 +48,7 @@ namespace vsge {
 
 		public: //maybe "friend" in a future
 
-		Internal_Rectangle();
+		Internal_Rectangle(int layer);
 
 		Vector2f getSize() const;
 		void setSize(Vector2f size);

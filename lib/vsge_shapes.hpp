@@ -23,8 +23,11 @@ namespace vsge
 		// Color getOutlineColor() const;
 		// void setOutlineColor(Color color);
 
-		// void hide();
-		// void unhide();
+		int getLayer();
+		void setLayer(int layer);
+
+		void hide();
+		void unhide();
 	};
 
 	class Rectangle : public Shape {

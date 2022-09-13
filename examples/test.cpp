@@ -27,10 +27,20 @@ int main() {
 			rect.setColor(Color(0, 0, i*50));
 			the_other_func();
 			sleep(1);
+			if (i % 2) rect.hide();
+			else rect.unhide();
 		}
 	}
 
 	sleep(1);
+
+	Rectangle rect3(6); rect3.setColor(Color(0, 255, 0)); rect3.setPosition(Vector2f(20, 20));
+	Rectangle rect4(4); rect4.setColor(Color(255, 255, 0)); rect4.setPosition(Vector2f(0, 0));
+
+	for (int i = 0; i < 10; i++) {
+		if (i % 2 == 0) rect3.setLayer(3);
+		else rect3.setLayer(6);
+	}
 
 	return 0;
 }

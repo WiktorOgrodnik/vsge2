@@ -19,7 +19,7 @@ namespace vsge {
 		~Layers_container();
 
 		void addToLayer(int layer, Drawable* drawable);
-		void deleteFromLayer(Drawable* drawable);
+		void deleteFromLayer(int layer, Drawable* drawable);
 
 		void draw(sf::RenderWindow* window);
 	};
@@ -45,9 +45,14 @@ namespace vsge {
 		void render();
 		bool isRunning() const;
 
+		// Manage layers
+
+		void addToLayer(int layer, Drawable* drawable);
+		void deleteFromLayer(int layer, Drawable* drawable);
+
 		// Factories
 
-		Internal_Rectangle* Rectangle_Factory(unsigned layer);
+		Internal_Rectangle* Rectangle_Factory(int layer);
 
 		// Cemeteries
 
