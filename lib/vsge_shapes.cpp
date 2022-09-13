@@ -9,6 +9,7 @@ namespace vsge {
 
 	Shape::~Shape() {
 		if (!hidden) Core::getInstance().Shape_Cementry(internal);
+
 		delete internal;
 	}
 
@@ -36,7 +37,7 @@ namespace vsge {
 	// 	internal->setOutlineColor(color);
 	// }
 
-	int Shape::getLayer() {
+  int Shape::getLayer() {
 		return internal->getLayer();
 	}
 

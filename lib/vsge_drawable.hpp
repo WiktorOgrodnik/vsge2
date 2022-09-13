@@ -10,7 +10,7 @@ namespace vsge {
 	protected:
 
 		int layer;
-
+    
 	public: // Internal API
 		
 		Drawable();
@@ -49,6 +49,35 @@ namespace vsge {
 		public: //maybe "friend" in a future
 
 		Internal_Rectangle(int layer);
+
+		Vector2f getSize() const;
+		void setSize(Vector2f size);
+	};
+
+	class Internal_Shape : public Drawable {
+
+	protected:
+		sf::Shape* shape;
+		Internal_Shape();
+
+	public: // maybe "friend" in a future
+
+		void Draw(sf::RenderWindow* window) override;
+		virtual ~Internal_Shape();
+
+		Vector2f getPosition() const override;
+		void setPosition(Vector2f pos) override;
+		Color getColor() const;
+		void setColor(Color color);
+		Color getOutlineColor() const;
+		void setOutlineColor(Color col);
+	};
+
+	class Internal_Rectangle : public Internal_Shape {
+
+		public: //maybe "friend" in a future
+
+		Internal_Rectangle();
 
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
