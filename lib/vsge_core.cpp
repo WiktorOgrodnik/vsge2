@@ -54,7 +54,7 @@ namespace vsge {
 	}
 
 	Core::~Core() {
-		delete window;
+		cleanup();
 	}
 
 	void Core::initWindow(char* title) {
@@ -88,6 +88,17 @@ namespace vsge {
 
 	bool Core::isRunning() const {
 		return window->isOpen();
+	}
+
+	void Core::terminate() {
+		window->close();
+	}
+
+	void Core::cleanup() {
+
+		// also layers cleanup in a future
+
+		//delete window; // it causes segfault for some reason!
 	}
 
 	// Manage layers
