@@ -53,6 +53,15 @@ namespace vsge {
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
 	};
+
+	class Internal_Grid : public Internal_Shape {
+
+        sf::Shape **shape;
+		public: //maybe "friend" in a future
+
+		Internal_Grid(int* array[], int x, int y);
+        void Draw(sf::RenderWindow* window) override;
+	};
 }
 
 #endif

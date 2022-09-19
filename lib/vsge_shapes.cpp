@@ -74,4 +74,9 @@ namespace vsge {
 	void Rectangle::setSize(Vector2f size) {
 		return static_cast<Internal_Rectangle*>(internal)->setSize(size);
 	} 
+
+	Grid::Grid(int layer, int* array[], int x, int y) {
+        internal = Core::getInstance().Grid_Factory(layer, array, x, y);
+		//internal = Core::getInstance().Rectangle_Factory();
+	}
 }

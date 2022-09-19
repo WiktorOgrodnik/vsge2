@@ -59,6 +59,7 @@ namespace vsge {
 		// Factories
 
 		Internal_Rectangle* Rectangle_Factory(int layer);
+		Internal_Grid* Grid_Factory(int layer, int* array[], int x, int y);
 
 		// Cemeteries
 

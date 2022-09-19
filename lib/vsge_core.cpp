@@ -1,6 +1,6 @@
 #include "vsge_core.hpp"
 #include <cassert>
-
+#include <iostream>
 namespace vsge {
 
 	Layers_container::Layers_container() {
@@ -121,6 +121,12 @@ namespace vsge {
 		return t;
 	}
 	
+	Internal_Grid* Core::Grid_Factory(int layer, int **array, int x, int y){
+
+		Internal_Grid* t = new Internal_Grid(array, x, y);
+		layers.addToLayer(layer, t);
+		return t;
+	}
 	// Cementries
 
 	void Core::Shape_Cementry(Internal_Shape* shape) {

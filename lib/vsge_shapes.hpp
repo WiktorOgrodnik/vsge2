@@ -37,6 +37,11 @@ namespace vsge
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
 	};
+	class Grid : public Shape {
+
+	public: 
+		Grid(int layer, int* array[], int x, int y);
+	};
 }
 
 #endif

@@ -12,35 +12,31 @@ void the_other_func() {
 int main() {
 
 	std::cout << "Hello World!\n";
-	Rectangle rect2(5);
-	rect2.setSize(Vector2f(50, 50));
+	//Rectangle rect2(5);
+	//rect2.setSize(Vector2f(50, 50));
     {
-		Rectangle rect(1);
-		rect.setPosition(Vector2f(0, 0));
-		rect2.setPosition(Vector2f(100, 30));
 
-		rect2.setColor(Color(255, 0, 0));
-		
-		for (int i = 1; i <= 5; i++) {
-			std::cout << i << '\n';
-			rect.setPosition(Vector2f(i * 50, 0));
-			rect.setColor(Color(0, 0, i*50));
-			the_other_func();
-			sleep(1);
-			if (i % 2) rect.hide();
-			else rect.unhide();
+		//Rectangle rect;
+		//rect.SetPosition(0, 0);
+		int* array[10];
+		srand(time(NULL));
+		for(int i = 0; i < 10; i++){
+			array[i] = new int[10];
+			for(int j = 0; j < 10; j++){
+				int a = rand();
+				//std::cout << a << "\n";
+				array[i][j] = a % 2;
+			}
 		}
+		Grid grid(0, array, 10, 10);
+		for (int i = 0; i < 5; i++) {
+			sleep(1);
+		}
+
 	}
 
 
-	Rectangle rect3(6); rect3.setColor(Color(0, 255, 0)); rect3.setPosition(Vector2f(20, 20));
-	Rectangle rect4(4); rect4.setColor(Color(255, 255, 0)); rect4.setPosition(Vector2f(0, 0));
 
-	for (int i = 0; i < 10; i++) {
-		if (i % 2 == 0) rect3.setLayer(3);
-		else rect3.setLayer(6);
-		sleep(1);
-	}
 
 	return 0;
 }

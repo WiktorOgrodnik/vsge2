@@ -76,4 +76,23 @@ namespace vsge {
 	void Internal_Rectangle::setSize(Vector2f pos) {
 		static_cast<sf::RectangleShape*>(shape)->setSize(sf::Vector2f(pos.x, pos.y));
 	}
+	Internal_Grid::Internal_Grid(int* array[], int x, int y) {
+		shape = new sf::Shape* [10*10];
+        for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                shape[10*i+j] = new sf::RectangleShape(sf::Vector2f(100, 100));
+                shape[10*i+j]->setPosition(100*i, 100*j);
+                shape[10*i+j]->setFillColor(array[i][j] ? sf::Color::Black : sf::Color::White);
+            }
+        }
+		//shape->setFillColor(sf::Color::Black);
+	}
+    void Internal_Grid::Draw(sf::RenderWindow* window) {
+		for(int i = 0; i < 10; i++){
+            for(int j = 0; j < 10; j++){
+                window->draw(*shape[10*i+j]);
+            }
+        }
+        
+	}
 }
