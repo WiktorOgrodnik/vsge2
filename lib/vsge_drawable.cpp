@@ -130,4 +130,9 @@ namespace vsge {
 											  center.y + radius * std::sin(2*i*M_PI/this->points));
 		}
 	}
+
+	Internal_Line::Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer) {
+		this->layer = layer;
+		line = new sf::RectangleShape();
+	}
 }
