@@ -56,11 +56,22 @@ namespace vsge {
 
 	class Internal_Grid : public Internal_Shape {
 
+		enum ColorMode{
+			LIST,
+			GRADIENT
+		};
+		ColorMode colorMode;
+		Vector2u size;
         sf::Shape **shape;
+		
+
 		public: //maybe "friend" in a future
 
-		Internal_Grid(int* array[], int x, int y);
+		Internal_Grid(int* array[], int x, int y, int cellSize, Color* mapping);
+		Internal_Grid(float* array[], int x, int y, int cellSize, Color* mapping);
+
         void Draw(sf::RenderWindow* window) override;
+		Vector2u getSize() const;
 	};
 }
 

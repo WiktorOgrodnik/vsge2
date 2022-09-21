@@ -38,9 +38,10 @@ namespace vsge
 		void setSize(Vector2f size);
 	};
 	class Grid : public Shape {
-
 	public: 
-		Grid(int layer, int* array[], int x, int y);
+		Grid(int layer, int* array[], int x, int y, int cellSize, Color* mapping);
+		Grid(int layer, float* array[], int x, int y, int cellSize, Color* mapping);
+		Vector2u getSize() const;
 	};
 }
 

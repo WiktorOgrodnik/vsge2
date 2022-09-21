@@ -1,5 +1,5 @@
 #include "vsge_drawable.hpp"
-
+#include <iostream>
 namespace vsge {
 
 	Drawable::Drawable() {
@@ -76,23 +76,38 @@ namespace vsge {
 	void Internal_Rectangle::setSize(Vector2f pos) {
 		static_cast<sf::RectangleShape*>(shape)->setSize(sf::Vector2f(pos.x, pos.y));
 	}
-	Internal_Grid::Internal_Grid(int* array[], int x, int y) {
-		shape = new sf::Shape* [10*10];
-        for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
-                shape[10*i+j] = new sf::RectangleShape(sf::Vector2f(100, 100));
-                shape[10*i+j]->setPosition(100*i, 100*j);
-                shape[10*i+j]->setFillColor(array[i][j] ? sf::Color::Black : sf::Color::White);
+	Internal_Grid::Internal_Grid(int* array[], int x, int y, int cellSize, Color* mapping) : colorMode(LIST), size(x, y) {
+		shape = new sf::Shape* [x*y];
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                shape[y*i+j] = new sf::RectangleShape(sf::Vector2f(cellSize, cellSize));
+                shape[y*i+j]->setPosition(cellSize*i, cellSize*j);
+				Color c = mapping[array[i][j]];
+                shape[y*i+j]->setFillColor(sf::Color(c.r, c.g, c.b, c.a));
             }
         }
-		//shape->setFillColor(sf::Color::Black);
+	}
+	Internal_Grid::Internal_Grid(float* array[], int x, int y, int cellSize, Color* mapping) : colorMode(GRADIENT), size(x, y) {
+		shape = new sf::Shape* [x*y];
+        for(int i = 0; i < x; i++){
+            for(int j = 0; j < y; j++){
+                shape[y*i+j] = new sf::RectangleShape(sf::Vector2f(cellSize, cellSize));
+                shape[y*i+j]->setPosition(cellSize*i, cellSize*j);
+				Color low = mapping[0], high = mapping[1];
+				
+                shape[y*i+j]->setFillColor(sf::Color(low.r+(int)(array[i][j]*(high.r-low.r)), low.g+(int)(array[i][j]*(high.g-low.g)), low.b+(int)(array[i][j]*(high.b-low.b)), low.a+(int)(array[i][j]*(high.a-low.a))));
+            }
+        }
 	}
     void Internal_Grid::Draw(sf::RenderWindow* window) {
-		for(int i = 0; i < 10; i++){
-            for(int j = 0; j < 10; j++){
-                window->draw(*shape[10*i+j]);
+		for(int i = 0; i < size.x; i++){
+            for(int j = 0; j < size.y; j++){
+                window->draw(*shape[size.y*i+j]);
             }
         }
         
+	}
+	Vector2u Internal_Grid::getSize() const {
+		return size;
 	}
 }

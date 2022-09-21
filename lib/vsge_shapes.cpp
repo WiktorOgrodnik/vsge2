@@ -75,8 +75,14 @@ namespace vsge {
 		return static_cast<Internal_Rectangle*>(internal)->setSize(size);
 	} 
 
-	Grid::Grid(int layer, int* array[], int x, int y) {
-        internal = Core::getInstance().Grid_Factory(layer, array, x, y);
-		//internal = Core::getInstance().Rectangle_Factory();
+	Grid::Grid(int layer, int* array[], int x, int y, int cellSize, Color* mapping) {
+        internal = Core::getInstance().Grid_Factory(layer, array, x, y, cellSize, mapping);
 	}
+	Grid::Grid(int layer, float* array[], int x, int y, int cellSize, Color* mapping) {
+        internal = Core::getInstance().Grid_Factory(layer, array, x, y, cellSize, mapping);
+	}
+	Vector2u Grid::getSize() const {
+		return static_cast<Internal_Grid*>(internal)->getSize();
+	}
+
 }

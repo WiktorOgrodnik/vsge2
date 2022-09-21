@@ -121,9 +121,15 @@ namespace vsge {
 		return t;
 	}
 	
-	Internal_Grid* Core::Grid_Factory(int layer, int **array, int x, int y){
+	Internal_Grid* Core::Grid_Factory(int layer, int **array, int x, int y, int cellSize, Color* mapping){
 
-		Internal_Grid* t = new Internal_Grid(array, x, y);
+		Internal_Grid* t = new Internal_Grid(array, x, y, cellSize, mapping);
+		layers.addToLayer(layer, t);
+		return t;
+	}
+	Internal_Grid* Core::Grid_Factory(int layer, float **array, int x, int y, int cellSize, Color* mapping){
+
+		Internal_Grid* t = new Internal_Grid(array, x, y, cellSize, mapping);
 		layers.addToLayer(layer, t);
 		return t;
 	}

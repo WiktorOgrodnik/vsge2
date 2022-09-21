@@ -18,17 +18,19 @@ int main() {
 
 		//Rectangle rect;
 		//rect.SetPosition(0, 0);
-		int* array[10];
+		float* array[10];
 		srand(time(NULL));
 		for(int i = 0; i < 10; i++){
-			array[i] = new int[10];
-			for(int j = 0; j < 10; j++){
+			array[i] = new float[5];
+			for(int j = 0; j < 5; j++){
 				int a = rand();
-				//std::cout << a << "\n";
-				array[i][j] = a % 2;
+				
+				array[i][j] = (float)(a % 100)/100;
+				//std::cout << array[i][j] << "\n";
 			}
 		}
-		Grid grid(0, array, 10, 10);
+		Color mapping[2] = {Color(0, 0, 0), Color(255, 0, 0)};
+		Grid grid(0, array, 10, 5, 100, mapping);
 		for (int i = 0; i < 5; i++) {
 			sleep(1);
 		}
