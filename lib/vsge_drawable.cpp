@@ -76,4 +76,9 @@ namespace vsge {
 	void Internal_Rectangle::setSize(Vector2f pos) {
 		static_cast<sf::RectangleShape*>(shape)->setSize(sf::Vector2f(pos.x, pos.y));
 	}
+
+	Internal_Line::Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer) {
+		this->layer = layer;
+		line = new sf::RectangleShape();
+	}
 }

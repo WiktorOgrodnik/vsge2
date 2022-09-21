@@ -46,12 +46,41 @@ namespace vsge {
 
 	class Internal_Rectangle : public Internal_Shape {
 
-		public: //maybe "friend" in a future
+	public: //maybe "friend" in a future
 
 		Internal_Rectangle(int layer);
 
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
+	};
+
+	class Internal_Line: public Drawable {
+	protected:
+		sf::RectangleShape* line;
+	
+	public:
+
+		Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer);
+
+		void Draw(sf::RenderWindow* window) override;
+		virtual ~Internal_Line();
+
+		Vector2f getPosition() const override;
+		Vector2f getFirstPosition() const;
+		Vector2f getSecondPosition() const;
+
+		void setPosition(Vector2f position) override;
+		void setPosition(Vector2f firstPosition, Vector2f secondPosition);
+		void setFirstPosition(Vector2f position);
+		void setSecondPosition(Vector2f position);
+
+		Color getColor() const;
+		void setColor(Color color);
+		Color getOutlineColor() const;
+		void setOutlineColor(Color col);
+
+		float getLineThickness() const;
+		void setLineThickness(float thickness);
 	};
 }
 

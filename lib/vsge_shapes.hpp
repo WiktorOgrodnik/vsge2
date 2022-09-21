@@ -6,6 +6,7 @@
 namespace vsge
 {
 	class Internal_Shape;
+	class Internal_Line;
 
 	class Shape {
 
@@ -36,6 +37,11 @@ namespace vsge
 		Rectangle(int layer = 0, bool hidden = false);
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
+	};
+
+	class Line {
+		Internal_Line* internal;
+		bool hidden;
 	};
 }
 
