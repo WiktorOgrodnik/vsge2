@@ -10,16 +10,6 @@ namespace vsge {
 	Layers_container::~Layers_container() {
 
 	}
-
-	std::vector<Drawable*>::iterator Layers_container::findObject(std::vector<Drawable*>& vec, Drawable* object) {
-
-		for (auto it = vec.begin(); it != vec.end(); it++) {
-			if (*it == object) return it;
-		}
-
-		return vec.end();
-	}
-
 	void Layers_container::addToLayer(int layer, Drawable* drawable) {
 		layers[layer].push_back(drawable);
 	}
@@ -30,7 +20,7 @@ namespace vsge {
 
 		std::vector<Drawable*>& vec = layers[layer];
 
-		auto index = findObject(vec, drawable);
+		auto index = std::find(vec.begin(), vec.end(), drawable);
 
 		assert((void("This shape does not exist in the render engine!"), index != vec.end()));
 
