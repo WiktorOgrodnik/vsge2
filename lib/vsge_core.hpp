@@ -21,14 +21,14 @@ namespace vsge {
 		void addToLayer(int layer, Drawable* drawable);
 		void deleteFromLayer(int layer, Drawable* drawable);
 
-		void draw(sf::RenderWindow* window);
+		void draw(Window* window);
 	};
 
 	class Core {
 
 		private:
 
-		sf::RenderWindow* window;
+		Window* window;
 		Layers_container layers;
 
 		Core();

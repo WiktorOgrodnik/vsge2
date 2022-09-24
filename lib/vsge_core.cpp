@@ -37,7 +37,7 @@ namespace vsge {
 		vec.erase(index);
 	}
 
-	void Layers_container::draw(sf::RenderWindow* window) {
+	void Layers_container::draw(Window* window) {
 
 		for (auto it = layers.begin(); it != layers.end(); it++) {
 			for (auto& k : it->second) {
@@ -47,10 +47,7 @@ namespace vsge {
 	}
 
 	Core::Core() {
-		sf::VideoMode videoMode = sf::VideoMode(1024, 768);
-		window = new sf::RenderWindow(videoMode, "vsge", sf::Style::Titlebar | sf::Style::Close);
-		window->setVerticalSyncEnabled(true);
-		window->setFramerateLimit(60);
+		window = new Window();
 	}
 
 	Core::~Core() {
@@ -67,21 +64,11 @@ namespace vsge {
 	}
 
 	void Core::pollEvents() {
-		sf::Event event;
-
-		while (window->pollEvent(event)) {
-			switch (event.type) {
-				case sf::Event::Closed:
-					window->close();
-					break;
-				default:
-					break;
-			}
-		}
+		window->pollEvents();
 	}
 
 	void Core::render() {
-		window->clear(sf::Color(sf::Color::White));
+		window->clear(Color(255, 255, 255));
 		layers.draw(window);
 		window->display();
 	}
@@ -98,7 +85,7 @@ namespace vsge {
 
 		// also layers cleanup in a future
 
-		//delete window; // it causes segfault for some reason!
+		// delete window; // it causes segfault for some reason!
 	}
 
 	// Manage layers
