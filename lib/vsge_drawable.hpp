@@ -1,7 +1,7 @@
 #ifndef VSGE_DRAWABLE_HPP
 #define VSGE_DRAWABLE_HPP
 
-#include "vsge_config.hpp"
+#include "vsge_window.hpp"
 
 namespace vsge {
 
@@ -16,7 +16,7 @@ namespace vsge {
 		Drawable();
 		virtual ~Drawable();
 
-		virtual void Draw(sf::RenderWindow* window) = 0;
+		virtual void Draw(Window* window) = 0;
 
 		virtual Vector2f getPosition() const = 0;
 		virtual void setPosition(Vector2f pos) = 0;
@@ -33,7 +33,7 @@ namespace vsge {
 
 	public: // maybe "friend" in a future
 
-		void Draw(sf::RenderWindow* window) override;
+		void Draw(Window* window) override;
 		virtual ~Internal_Shape();
 
 		Vector2f getPosition() const override;

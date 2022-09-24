@@ -30,8 +30,8 @@ namespace vsge {
 		delete shape;
 	}
 
-	void Internal_Shape::Draw(sf::RenderWindow* window) {
-		window->draw(*shape);
+	void Internal_Shape::Draw(Window* window) {
+		window->draw(shape);
 	}
 
 	Vector2f Internal_Shape::getPosition() const {
