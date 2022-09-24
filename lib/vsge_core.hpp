@@ -11,8 +11,6 @@ namespace vsge {
 
 		std::map<int, std::vector<Drawable*>> layers;
 
-		std::vector<Drawable*>::iterator findObject(std::vector<Drawable*>& vec, Drawable* object);
-
 		public:
 
 		Layers_container();
