@@ -56,7 +56,10 @@ namespace vsge {
 
 		// Factories
 
-		Internal_Rectangle* Rectangle_Factory(int layer);
+		Internal_Rectangle* Rectangle_Factory(int layer, 
+											  Vector2f position, 
+											  Vector2f size, 
+											  Color color);
 
 		// Cemeteries
 

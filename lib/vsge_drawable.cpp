@@ -23,57 +23,79 @@ namespace vsge {
 	}
 
 	Internal_Shape::Internal_Shape() {
-
+		
 	}
 
 	Internal_Shape::~Internal_Shape() {
-		delete shape;
+
 	}
 
 	void Internal_Shape::Draw(Window* window) {
-		window->draw(shape);
+		window->draw(vertex);
 	}
 
 	Vector2f Internal_Shape::getPosition() const {
-		sf::Vector2f pos = shape->getPosition();
-		return Vector2f(pos.x, pos.y);
+		return center;
 	}
 
 	void Internal_Shape::setPosition(Vector2f pos) {
-		shape->setPosition(sf::Vector2f(pos.x, pos.y));
+
+		Vector2f delta = Vector2f(pos.x - center.x, pos.y - center.y);
+
+		for (std::size_t i = 0; i < vertex.getVertexCount(); i++) {
+			sf::Vertex& t = vertex[i];
+			t.position += sf::Vector2f(delta.x, delta.y);
+		}
+
+		center = pos;
 	}
 
 	Color Internal_Shape::getColor() const {
-		const sf::Color col = shape->getFillColor();
-		return Color(col.r, col.g, col.b, col.a);
+		return color;
 	}
 
 	void Internal_Shape::setColor(Color color) {
-		shape->setFillColor(sf::Color(color.r, color.g, color.b, color.a));
+
+		for (std::size_t i = 0; i < vertex.getVertexCount(); i++) {
+			sf::Vertex& t = vertex[i];
+			t.color = sf::Color(color.r, color.g, color.b, color.a);
+		}
+
+		this->color = color;
 	}
 
-	Color Internal_Shape::getOutlineColor() const {
-		const sf::Color col = shape->getOutlineColor();
-		return Color(col.r, col.g, col.b, col.a);
-	}
+	// Color Internal_Shape::getOutlineColor() const {
+	// 	return color;
+	// }
 
-	void Internal_Shape::setOutlineColor(Color color) {
-		shape->setOutlineColor(sf::Color(color.r, color.g, color.b, color.a));
-	}
+	// void Internal_Shape::setOutlineColor(Color color) {
 
-	Internal_Rectangle::Internal_Rectangle(int layer) {
+	// }
+
+	Internal_Rectangle::Internal_Rectangle(int layer,
+										   Vector2f position,
+										   Vector2f size,
+										   Color color)
+	{
 		this->layer = layer;
-		shape = new sf::RectangleShape();
-		this->setSize(Vector2f(100, 100));
-		this->setColor(Color(0, 0, 0));
+		this->center = position;
+		vertex = sf::VertexArray(sf::Quads, 4);
+
+		setSize(size);
+		setColor(color);
 	}
 
 	Vector2f Internal_Rectangle::getSize() const {
-		sf::Vector2f size = static_cast<sf::RectangleShape*>(shape)->getSize();
-		return Vector2f(size.x, size.y);
+		return size;
 	}
 
-	void Internal_Rectangle::setSize(Vector2f pos) {
-		static_cast<sf::RectangleShape*>(shape)->setSize(sf::Vector2f(pos.x, pos.y));
+	void Internal_Rectangle::setSize(Vector2f size) {
+
+		this->size = size;
+
+		for (std::size_t i = 0; i < vertex.getVertexCount(); i++) {
+			vertex[i].position = sf::Vector2f(center.x + ((i == 3) | (i == 0) ? -1 : 1) * (size.x / 2), 
+											  center.y + (i < 2 ? -1 : 1) * (size.y / 2));
+		}
 	}
 }

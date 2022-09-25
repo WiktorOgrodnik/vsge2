@@ -48,7 +48,7 @@ namespace vsge {
 		window->setTitle(title);
 	}
 
-	void Window::draw(sf::Drawable* drawable) {
-		window->draw(*drawable);
+	void Window::draw(sf::VertexArray& vertexArray) {
+		window->draw(vertexArray);
 	}
 }
