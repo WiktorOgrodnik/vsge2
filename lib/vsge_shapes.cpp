@@ -2,7 +2,7 @@
 #include "vsge_core.hpp"
 
 namespace vsge {
-	
+
 	Shape::Shape() {
 		hidden = false;
 	}
@@ -37,7 +37,7 @@ namespace vsge {
 	// 	internal->setOutlineColor(color);
 	// }
 
-  int Shape::getLayer() {
+	int Shape::getLayer() {
 		return internal->getLayer();
 	}
 
@@ -63,8 +63,13 @@ namespace vsge {
 		}
 	}
 
-	Rectangle::Rectangle(int layer, bool hidden) {
-		internal = Core::getInstance().Rectangle_Factory(layer);
+	Rectangle::Rectangle(Vector2f position,
+						 Vector2f size,
+						 Color color,
+						 int layer,
+						 bool hidden)
+	{
+		internal = Core::getInstance().Rectangle_Factory(layer, position, size, color);
 	}
 
 	Vector2f Rectangle::getSize() const {
@@ -73,5 +78,5 @@ namespace vsge {
 
 	void Rectangle::setSize(Vector2f size) {
 		return static_cast<Internal_Rectangle*>(internal)->setSize(size);
-	} 
+	}
 }

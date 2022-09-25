@@ -90,9 +90,12 @@ namespace vsge {
 	
 	// Factories
 
-	Internal_Rectangle* Core::Rectangle_Factory(int layer) {
-
-		Internal_Rectangle* t = new Internal_Rectangle(layer);
+	Internal_Rectangle* Core::Rectangle_Factory(int layer, 
+												Vector2f position, 
+												Vector2f size, 
+												Color color) 
+	{
+		Internal_Rectangle* t = new Internal_Rectangle(layer, position, size, color);
 
 		layers.addToLayer(layer, t);
 		return t;
