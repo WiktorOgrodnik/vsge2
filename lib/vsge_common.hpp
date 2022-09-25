@@ -23,13 +23,14 @@ namespace vsge {
 
 		Color(unsigned red, unsigned green, unsigned blue, unsigned alpha = 255);
 
-		// most common colors were predefined
-		// jak to zrobić? xdd
-		// static Color Red;
-		// static Color Blue;
-		// static Color Green;
-		// static Color White;
-		// static Color Black;
+		static const Color Red;
+		static const Color Green;
+		static const Color Blue;
+		static const Color Yellow;
+		static const Color Cyan;
+		static const Color Magenta;
+		static const Color White;
+		static const Color Black;
 	};
 }
 
