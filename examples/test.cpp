@@ -19,7 +19,7 @@ int main() {
 		rect.setPosition(Vector2f(0, 0));
 		rect2.setPosition(Vector2f(100, 30));
 
-		rect2.setColor(Color(255, 0, 0));
+		rect2.setColor(Color::Red);
 		
 		for (int i = 1; i <= 5; i++) {
 			std::cout << i << '\n';
@@ -33,14 +33,14 @@ int main() {
 	}
 
 
-	Rectangle rect3(6); rect3.setColor(Color(0, 255, 0)); rect3.setPosition(Vector2f(20, 20));
-	Rectangle rect4(4); rect4.setColor(Color(255, 255, 0)); rect4.setPosition(Vector2f(0, 0));
+	Rectangle rect3(6); rect3.setColor(Color::Green); rect3.setPosition(Vector2f(20, 20));
+	Rectangle rect4(4); rect4.setColor(Color::Yellow); rect4.setPosition(Vector2f(0, 0));
 
 	for (int i = 0; i < 10; i++) {
 		if (i % 2 == 0) rect3.setLayer(3);
 		else rect3.setLayer(6);
 		sleep(1);
 	}
-
+	
 	return 0;
 }
