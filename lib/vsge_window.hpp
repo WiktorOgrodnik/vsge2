@@ -24,7 +24,7 @@ namespace vsge {
 
 		void setTitle(std::string title);
 
-		void draw(sf::Drawable* drawable);
+		void draw(sf::VertexArray& vertexArray);
 	};
 }
 

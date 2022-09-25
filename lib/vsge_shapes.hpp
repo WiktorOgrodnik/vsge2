@@ -34,7 +34,12 @@ namespace vsge
 	class Rectangle : public Shape {
 
 	public:
-		Rectangle(int layer = 0, bool hidden = false);
+		Rectangle(Vector2f position,
+			      Vector2f size,
+				  Color color,
+				  int layer = 0,
+				  bool hidden = false);
+
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
 	};
