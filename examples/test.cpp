@@ -12,6 +12,9 @@ void the_other_func() {
 int main() {
 
 	std::cout << "Hello World!\n";
+
+	Circle circ1(Vector2f(250, 110), 100, Color::Red, 10, false);
+
 	Rectangle rect2(Vector2f(125, 55), Vector2f(50, 50), Color::Red, 5, false);
     {
 		Rectangle rect(Vector2f(50, 50), Vector2f(100, 100), Color::Black);

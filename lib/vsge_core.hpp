@@ -61,6 +61,11 @@ namespace vsge {
 											  Vector2f size, 
 											  Color color);
 
+		Internal_Circle* Circle_Factory(int layer,
+										Vector2f position,
+										float radius,
+										Color color);
+
 		// Cemeteries
 
 		void Shape_Cementry(Internal_Shape* shape);

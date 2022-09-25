@@ -79,4 +79,21 @@ namespace vsge {
 	void Rectangle::setSize(Vector2f size) {
 		return static_cast<Internal_Rectangle*>(internal)->setSize(size);
 	}
+
+	Circle::Circle(Vector2f position,
+				   float radius,
+				   Color color,
+				   int layer,
+				   bool hidden)
+	{
+		internal = Core::getInstance().Circle_Factory(layer, position, radius, color);
+	}
+
+	float Circle::getRadius() const {
+		return static_cast<Internal_Circle*>(internal)->getRadius();
+	}
+
+	void Circle::setRadius(float radius) {
+		return static_cast<Internal_Circle*>(internal)->setRadius(radius);
+	}
 }

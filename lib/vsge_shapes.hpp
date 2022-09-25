@@ -42,6 +42,19 @@ namespace vsge
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
 	};
+
+	class Circle : public Shape {
+	
+	public:
+		Circle(Vector2f position,
+			   float radius,
+			   Color color,
+			   int layer = 0,
+			   bool hidden = false);
+		
+		float getRadius() const;
+		void setRadius(float radius);
+	};
 }
 
 #endif

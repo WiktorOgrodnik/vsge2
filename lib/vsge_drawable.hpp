@@ -69,6 +69,22 @@ namespace vsge {
 		Vector2f getSize() const;
 		void setSize(Vector2f size);
 	};
+
+	class Internal_Circle : public Internal_Shape {
+
+		float radius = 0;
+		const int points = 40;
+	
+	public:
+
+		Internal_Circle(int layer,
+						Vector2f position,
+						float radius,
+						Color color);
+		
+		float getRadius() const;
+		void setRadius(float radius);
+	};
 }
 
 #endif
