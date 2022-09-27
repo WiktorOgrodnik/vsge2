@@ -58,7 +58,7 @@ namespace vsge {
 
 		for (std::size_t i = 0; i < vertex.getVertexCount(); i++) {
 			sf::Vertex& t = vertex[i];
-			t.color = sf::Color(color.r, color.g, color.b, color.a);
+			t.color = COLOR_VSGE_TO_SF(color);
 		}
 
 		this->color = color;

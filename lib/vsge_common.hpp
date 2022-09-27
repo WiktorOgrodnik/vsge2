@@ -1,6 +1,8 @@
 #ifndef VSGE_COMMON_HPP
 #define VSGE_COMMON_HPP
 
+#include <cstdint>
+
 namespace vsge {
 
 	template <typename T>
@@ -19,9 +21,9 @@ namespace vsge {
 
 	class Color {
 	public:
-		unsigned r, g, b, a;
+		uint8_t r, g, b, a;
 
-		Color(unsigned red, unsigned green, unsigned blue, unsigned alpha = 255);
+		Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha = 255);
 
 		static const Color Red;
 		static const Color Green;
