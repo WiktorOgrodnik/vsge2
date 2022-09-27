@@ -58,7 +58,7 @@ namespace vsge {
 	}
 
 	void Core::render() {
-		window->clear(Color(255, 255, 255));
+		window->clear(Color::White);
 		layers.draw(window);
 		window->display();
 	}

@@ -37,7 +37,7 @@ namespace vsge {
 	}
 
 	void Window::clear(const Color& color) {
-		window->clear(sf::Color(color.r, color.g, color.b, color.a));
+		window->clear(COLOR_VSGE_TO_SF(color));
 	}
 
 	void Window::display() {
