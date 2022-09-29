@@ -44,9 +44,17 @@ namespace vsge
 		void setSize(Vector2f size);
 	};
 
-	class Line {
-		Internal_Line* internal;
-		bool hidden;
+	class Circle : public Shape {
+	
+	public:
+		Circle(Vector2f position,
+			   float radius,
+			   Color color,
+			   int layer = 0,
+			   bool hidden = false);
+		
+		float getRadius() const;
+		void setRadius(float radius);
 	};
 }
 

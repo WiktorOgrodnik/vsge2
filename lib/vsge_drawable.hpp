@@ -70,33 +70,20 @@ namespace vsge {
 		void setSize(Vector2f size);
 	};
 
-	class Internal_Line: public Drawable {
-	protected:
-		sf::RectangleShape* line;
+	class Internal_Circle : public Internal_Shape {
+
+		float radius = 0;
+		const int points = 40;
 	
 	public:
 
-		Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer);
-
-		void Draw(sf::RenderWindow* window) override;
-		virtual ~Internal_Line();
-
-		Vector2f getPosition() const override;
-		Vector2f getFirstPosition() const;
-		Vector2f getSecondPosition() const;
-
-		void setPosition(Vector2f position) override;
-		void setPosition(Vector2f firstPosition, Vector2f secondPosition);
-		void setFirstPosition(Vector2f position);
-		void setSecondPosition(Vector2f position);
-
-		Color getColor() const;
-		void setColor(Color color);
-		Color getOutlineColor() const;
-		void setOutlineColor(Color col);
-
-		float getLineThickness() const;
-		void setLineThickness(float thickness);
+		Internal_Circle(int layer,
+						Vector2f position,
+						float radius,
+						Color color);
+		
+		float getRadius() const;
+		void setRadius(float radius);
 	};
 }
 

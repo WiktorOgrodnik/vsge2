@@ -1,4 +1,6 @@
 #include "vsge_drawable.hpp"
+#define _GNU_SOURCE
+#include <cmath>
 
 namespace vsge {
 
@@ -99,8 +101,33 @@ namespace vsge {
 		}
 	}
 
-	Internal_Line::Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer) {
+	Internal_Circle::Internal_Circle(int layer,
+									 Vector2f position,
+									 float radius,
+									 Color color)
+	{
 		this->layer = layer;
-		line = new sf::RectangleShape();
+		this->center = position;
+		vertex = sf::VertexArray(sf::TriangleFan, this->points + 2);
+
+
+		setRadius(radius);
+		setColor(color);
+	}
+
+	float Internal_Circle::getRadius() const {
+		return radius;
+	}
+
+	void Internal_Circle::setRadius(float radius) {
+		
+		this->radius = radius;
+
+		vertex[0].position = sf::Vector2f(center.x, center.y);
+
+		for (std::size_t i = 1; i < vertex.getVertexCount(); i++) {
+			vertex[i].position = sf::Vector2f(center.x + radius * std::cos(2*i*M_PI/this->points),
+											  center.y + radius * std::sin(2*i*M_PI/this->points));
+		}
 	}
 }
