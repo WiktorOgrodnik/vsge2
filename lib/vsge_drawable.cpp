@@ -1,4 +1,6 @@
 #include "vsge_drawable.hpp"
+#define _GNU_SOURCE
+#include <cmath>
 
 namespace vsge {
 
@@ -96,6 +98,36 @@ namespace vsge {
 		for (std::size_t i = 0; i < vertex.getVertexCount(); i++) {
 			vertex[i].position = sf::Vector2f(center.x + ((i == 3) | (i == 0) ? -1 : 1) * (size.x / 2), 
 											  center.y + (i < 2 ? -1 : 1) * (size.y / 2));
+		}
+	}
+
+	Internal_Circle::Internal_Circle(int layer,
+									 Vector2f position,
+									 float radius,
+									 Color color)
+	{
+		this->layer = layer;
+		this->center = position;
+		vertex = sf::VertexArray(sf::TriangleFan, this->points + 2);
+
+
+		setRadius(radius);
+		setColor(color);
+	}
+
+	float Internal_Circle::getRadius() const {
+		return radius;
+	}
+
+	void Internal_Circle::setRadius(float radius) {
+		
+		this->radius = radius;
+
+		vertex[0].position = sf::Vector2f(center.x, center.y);
+
+		for (std::size_t i = 1; i < vertex.getVertexCount(); i++) {
+			vertex[i].position = sf::Vector2f(center.x + radius * std::cos(2*i*M_PI/this->points),
+											  center.y + radius * std::sin(2*i*M_PI/this->points));
 		}
 	}
 }

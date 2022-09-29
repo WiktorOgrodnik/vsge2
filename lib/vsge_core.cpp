@@ -100,6 +100,17 @@ namespace vsge {
 		layers.addToLayer(layer, t);
 		return t;
 	}
+
+	Internal_Circle* Core::Circle_Factory(int layer,
+										  Vector2f position,
+										  float radius,
+										  Color color)
+	{
+		Internal_Circle* t = new Internal_Circle(layer, position, radius, color);
+
+		layers.addToLayer(layer, t);
+		return t;
+	}
 	
 	// Cementries
 
