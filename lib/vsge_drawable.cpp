@@ -131,8 +131,40 @@ namespace vsge {
 		}
 	}
 
-	Internal_Line::Internal_Line(sf::Vector2f firstPos, sf::Vector2f secondPos, int layer) {
+	Internal_Line::Internal_Line(int layer,
+								 Vector2f point1,
+								 Vector2f point2,
+								 float thickness,
+								 Color color) 
+	{
 		this->layer = layer;
-		line = new sf::RectangleShape();
+		this->center = Vector2f((point1.x + point2.x) / 2.0,
+								(point1.y + point2.y) / 2.0);
+
+		this->thickness = thickness;
+		this->vertex = sf::VertexArray(sf::Quads, 4);
+
+		setPoints(point1, point2);
+		setColor(color);
+	}
+
+	void Internal_Line::setPoints(Vector2f point1, Vector2f point2) {
+
+		// temporal solution! TO-DO: border lines can not be fit to Y axis
+
+		this->vertex[0].position = sf::Vector2f(point1.x, point1.y - thickness / 2.0);
+		this->vertex[1].position = sf::Vector2f(point1.x, point1.y + thickness / 2.0);
+		this->vertex[2].position = sf::Vector2f(point2.x, point2.y + thickness / 2.0);
+		this->vertex[3].position = sf::Vector2f(point2.x, point2.y - thickness / 2.0);
+	}
+
+	void Internal_Line::setThickness(float thickness) {
+		this->thickness = thickness;
+
+		setPoints(point1, point2);
+	}
+
+	float Internal_Line::getThickness() const {
+		return this->thickness;
 	}
 }

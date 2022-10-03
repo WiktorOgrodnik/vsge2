@@ -66,6 +66,12 @@ namespace vsge {
 										float radius,
 										Color color);
 
+		Internal_Line* Line_Factory(int layer,
+									Vector2f point1,
+									Vector2f point2,
+									float thickness,
+									Color color);
+
 		// Cemeteries
 
 		void Shape_Cementry(Internal_Shape* shape);

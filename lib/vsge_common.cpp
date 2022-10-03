@@ -11,7 +11,7 @@ namespace vsge {
 	const Color Color::White   = Color(255, 255, 255);
 	const Color Color::Black   = Color(0,   0,   0);
 
-	Color::Color(unsigned red, unsigned green, unsigned blue, unsigned alpha) {
+	Color::Color(uint8_t red, uint8_t green, uint8_t blue, uint8_t alpha) {
 		r = red; g = green; b = blue; a = alpha;
 	}
 }

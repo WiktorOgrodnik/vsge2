@@ -85,6 +85,27 @@ namespace vsge {
 		float getRadius() const;
 		void setRadius(float radius);
 	};
+
+	class Internal_Line : public Internal_Shape {
+
+		Vector2f point1 = Vector2f(0, 0);
+		Vector2f point2 = Vector2f(0, 0);
+
+		float thickness;
+
+	public:
+
+		Internal_Line(int layer,
+					  Vector2f point1,
+					  Vector2f point2,
+					  float thickness,
+					  Color color);
+
+		void setPoints(Vector2f point1, Vector2f point2);
+
+		void setThickness(float thickness);
+		float getThickness() const;
+	};
 }
 
 #endif

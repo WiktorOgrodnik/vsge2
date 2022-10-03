@@ -56,6 +56,22 @@ namespace vsge
 		float getRadius() const;
 		void setRadius(float radius);
 	};
+
+	class Line : public Shape {
+	
+	public:
+		Line(Vector2f point1,
+			 Vector2f point2,
+			 float thickness,
+			 Color color,
+			 int layer = 0,
+			 bool hidden = false);
+		
+		void setPoints(Vector2f point1, Vector2f point2);
+
+		void setThickness(float thickness);
+		float getThickness() const;
+	};
 }
 
 #endif

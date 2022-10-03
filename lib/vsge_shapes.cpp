@@ -96,4 +96,26 @@ namespace vsge {
 	void Circle::setRadius(float radius) {
 		return static_cast<Internal_Circle*>(internal)->setRadius(radius);
 	}
+
+	Line::Line(Vector2f point1,
+			   Vector2f point2,
+			   float thickness,
+			   Color color,
+			   int layer,
+			   bool hidden)
+	{
+		internal = Core::getInstance().Line_Factory(layer, point1, point2, thickness, color);
+	}
+
+	void Line::setPoints(Vector2f point1, Vector2f point2) {
+		static_cast<Internal_Line*>(internal)->setPoints(point1, point2);
+	}
+
+	void Line::setThickness(float thickness) {
+		static_cast<Internal_Line*>(internal)->setThickness(thickness);
+	}
+
+	float Line::getThickness() const {
+		return static_cast<Internal_Line*>(internal)->getThickness();
+	}
 }

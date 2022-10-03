@@ -111,6 +111,18 @@ namespace vsge {
 		layers.addToLayer(layer, t);
 		return t;
 	}
+
+	Internal_Line* Core::Line_Factory(int layer,
+									  Vector2f point1,
+									  Vector2f point2,
+									  float thickness,
+									  Color color)
+	{
+		Internal_Line* t = new Internal_Line(layer, point1, point2, thickness, color);
+
+		layers.addToLayer(layer, t);
+		return t;
+	}
 	
 	// Cementries
 
