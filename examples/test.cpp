@@ -15,7 +15,7 @@ int main() {
 
 	Circle circ1(Vector2f(250, 110), 100, Color::Red, 10, false);
 
-	Line line(Vector2f(10, 10), Vector2f(200, 200), 40.0, Color::Green);
+	Line line(Vector2f(10, 10), Vector2f(200, 200), 10.0, Color::Green);
 
 	Rectangle rect2(Vector2f(125, 55), Vector2f(50, 50), Color::Red, 5, false);
     {

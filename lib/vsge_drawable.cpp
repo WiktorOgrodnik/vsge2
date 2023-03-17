@@ -1,6 +1,8 @@
 #include "vsge_drawable.hpp"
 #define _GNU_SOURCE
 #include <cmath>
+#include <cassert>
+#include <iostream>
 
 namespace vsge {
 
@@ -131,6 +133,57 @@ namespace vsge {
 		}
 	}
 
+	std::string Internal_Line::printPoint(float x, float y) {
+		return "(" + std::to_string(x) + ", " + std::to_string(y) + ")";
+	}
+
+	float Internal_Line::lineLength(Vector2f point1, Vector2f point2) {
+		return sqrt(pow(point1.x - point2.x, 2) + pow(point1.y - point2.y, 2));
+	}
+
+	std::pair<float, float> Internal_Line::measureAngle() {
+
+		// cos angle : (a dot b) / (|a| * |b|)
+		// we are comparing vector b = [point1.x - center.x, point1.y - center.y] to
+		// vector a = [1, 0]
+
+		// So dot product  = (point1.x - center.x) * 1 + (point1.y - center.y) * 0
+		// |a| = lineLength(point1, center), |b| = 1 
+		float cos = (point1.x - center.x) / lineLength(point1, center);
+
+		// sin angle : sqrt(1 - cos^2)
+
+		assert(1 - cos*cos >= 0);
+
+		float sin = sqrt(1 - cos*cos);
+		
+		return std::make_pair(sin, cos);
+	}
+
+	sf::Vector2f Internal_Line::xyRotation(Vector2f origin, float x, float y, float sin, float cos) {
+		// Matrix multiplication to rotate line
+		// [x', y'] = [cos  -sin] [x][y]
+		//            [sin   cos]
+
+		std::cout << "Before transition: " << printPoint(x, y) << "\n";
+
+		x -= origin.x;
+		y -= origin.y;
+
+		std::cout << "After transition: " << printPoint(x, y) << "\n";
+
+		sf::Vector2f new_point = sf::Vector2f(x * cos + y * sin, -y * cos + -x * sin);
+
+		std::cout << "After rotate" << printPoint(new_point.x, new_point.y) << "\n";
+		
+		new_point.x += origin.x;
+		new_point.y += origin.y;
+
+		std::cout << "After transition2: " << printPoint(new_point.x, new_point.y) << "\n";
+
+		return new_point;
+	}
+
 	Internal_Line::Internal_Line(int layer,
 								 Vector2f point1,
 								 Vector2f point2,
@@ -150,12 +203,13 @@ namespace vsge {
 
 	void Internal_Line::setPoints(Vector2f point1, Vector2f point2) {
 
-		// temporal solution! TO-DO: border lines can not be fit to Y axis
+		auto [sin, cos] = measureAngle();
+		std::cout << "sin: " << sin << "\ncos: " << cos << "\n";
 
-		this->vertex[0].position = sf::Vector2f(point1.x, point1.y - thickness / 2.0);
-		this->vertex[1].position = sf::Vector2f(point1.x, point1.y + thickness / 2.0);
-		this->vertex[2].position = sf::Vector2f(point2.x, point2.y + thickness / 2.0);
-		this->vertex[3].position = sf::Vector2f(point2.x, point2.y - thickness / 2.0);
+		this->vertex[0].position = xyRotation(point1, point1.x, point1.y - thickness / 2.0, sin, cos);
+		this->vertex[1].position = xyRotation(point1, point1.x, point1.y + thickness / 2.0, sin, cos);
+		this->vertex[2].position = xyRotation(point2, point2.x, point2.y + thickness / 2.0, sin, cos);
+		this->vertex[3].position = xyRotation(point2, point2.x, point2.y - thickness / 2.0, sin, cos);
 	}
 
 	void Internal_Line::setThickness(float thickness) {

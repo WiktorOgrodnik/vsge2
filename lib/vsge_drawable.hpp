@@ -93,6 +93,13 @@ namespace vsge {
 
 		float thickness;
 
+		static std::string printPoint(float x, float y);
+
+		static float lineLength(Vector2f point1, Vector2f point2);
+		std::pair<float, float> measureAngle();
+
+		static sf::Vector2f xyRotation(Vector2f origin, float x, float y, float sin, float cos);
+
 	public:
 
 		Internal_Line(int layer,
